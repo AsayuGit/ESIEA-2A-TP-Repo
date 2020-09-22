@@ -1,0 +1,4 @@
+Imapair : Je recul je peux me mettre puis j'avance prendre le bloc suivant
+Pair : J'avance je peux me mettre puis je recule prendre le bloc suivant
+
+//printf("Test : %d | %d %d %d | %d %d | %d %d\n", i, Position, Select, Sens,  j, k, Tabs[Position][j], Tabs[Select][k]);
