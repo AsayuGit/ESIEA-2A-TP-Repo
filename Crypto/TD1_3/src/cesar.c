@@ -7,7 +7,7 @@ int mod(int a, int base){
   return (a < 0 ? ((a % base) + base) % base : a % base);
 }
 
-char CESAR (int k, char* nom_fic_input, char* nom_fic_output, char MODE){
+char CESAR (int k, char* nom_fic_input, char* nom_fic_output, char MODE, char* WriteMode){
     FILE* InputFp;
     FILE* OutputFp;
     char currentCharacter;
@@ -19,7 +19,11 @@ char CESAR (int k, char* nom_fic_input, char* nom_fic_output, char MODE){
         goto Error;
     }
 
-    OutputFp = fopen(nom_fic_output, "w");
+    OutputFp = fopen(nom_fic_output, WriteMode);
+
+    if (WriteMode[0] == 'a'){
+        fprintf(OutputFp, "Key is : %d\n", k);
+    }
         
     switch (MODE)
     {
@@ -61,6 +65,10 @@ char CESAR (int k, char* nom_fic_input, char* nom_fic_output, char MODE){
         break;
     }
 
+    if (WriteMode[0] == 'a'){
+        fprintf(OutputFp, "\n");
+    }
+
     fclose(InputFp);
     fclose(OutputFp);
 
@@ -78,9 +86,9 @@ Error:
 }
 
 char CHIFF_CESAR (int k, char* nom_fic_clair, char* nom_fic_chiff){
-    return CESAR(k, nom_fic_clair, nom_fic_chiff, 1);
+    return CESAR(k, nom_fic_clair, nom_fic_chiff, 1, "w");
 }
 
 char DECHIFF_CESAR (int k, char* nom_fic_chiff, char* nom_fic_dechiff){
-    return CESAR(k, nom_fic_chiff, nom_fic_dechiff, 0);
+    return CESAR(k, nom_fic_chiff, nom_fic_dechiff, 0, "w");
 }
