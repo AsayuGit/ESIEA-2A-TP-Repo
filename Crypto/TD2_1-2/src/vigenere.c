@@ -158,7 +158,8 @@ char RECHERCHE_CLE(char* nom_fic_clair, char* nom_fic_chiff, char* nom_fic_cle_r
         if (isalpha(clairCharacter)){
             offset = islower(clairCharacter) ? 'a' : 'A';
             if ((chiffCharacter = fgetc(chiffPointer)) != EOF){
-                fprintf(OutputPointer, "%c", mod(((chiffCharacter - offset) - (clairCharacter - offset)), 26) + offset);
+                //fprintf(OutputPointer, "%c", mod(((chiffCharacter - offset) - (clairCharacter - offset)), 26) + offset);
+                fprintf(OutputPointer, "%c", mod(((chiffCharacter - offset) - (clairCharacter - offset)), 26) + 'a'); // With this alogythm the key is always lowercase
             }
         }
     }
